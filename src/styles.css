@@ -568,6 +568,7 @@
       }
     }
 
+    /* todo: hover/dark mode went wrong */
     .copy {
       @apply p-1 text-text-muted opacity-0 transition-opacity hover:text-white;
     }
