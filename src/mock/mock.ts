@@ -1,0 +1,67 @@
+export const MOCK_SKILLS: SkillRecord[] = [
+	{
+		id: "skill_01",
+		title: "Write Code",
+		slug: "write-code",
+		description:
+			"A general-purpose coding agent skill that understands requirements, writes production-ready code, and iterates on feedback across any language or framework.",
+		category: "development",
+		tags: ["code", "typescript", "python", "ai"],
+		installCommand: "npx skills install write-code",
+		createdAt: "2026-05-25T10:00:00Z",
+		authorClerkId: "user_dev_001",
+		authorEmail: "alice@example.com",
+	},
+	{
+		id: "skill_02",
+		title: "Analyze Spreadsheet",
+		slug: "analyze-spreadsheet",
+		description:
+			"Read, clean, transform, and visualize tabular data in .xlsx, .csv, and .tsv formats with natural-language-driven analysis and chart generation.",
+		category: "data",
+		tags: ["xlsx", "csv", "data-analysis", "visualization"],
+		installCommand: "npx skills install analyze-spreadsheet",
+		createdAt: "2026-05-23T14:30:00Z",
+		authorClerkId: "user_dev_002",
+		authorEmail: "bob@example.com",
+	},
+	{
+		id: "skill_03",
+		title: "Generate Report",
+		slug: "generate-report",
+		description:
+			"Transform structured data and natural language outlines into polished PDF, Word, and presentation documents with custom templates and formatting.",
+		category: "documentation",
+		tags: ["pdf", "docx", "pptx", "reporting"],
+		installCommand: "npx skills install generate-report",
+		createdAt: "2026-05-20T09:15:00Z",
+		authorClerkId: "user_dev_003",
+		authorEmail: "carol@example.com",
+	},
+	{
+		id: "skill_04",
+		title: "Browse Web",
+		slug: "browse-web",
+		description:
+			"Automate browser interactions — navigate pages, extract content, fill forms, take screenshots, and test web flows with a headless browser agent.",
+		category: "automation",
+		tags: ["browser", "scraping", "e2e-testing", "playwright"],
+		installCommand: "npx skills install browse-web",
+		createdAt: "2026-05-18T16:45:00Z",
+		authorClerkId: null,
+		authorEmail: null,
+	},
+	{
+		id: "skill_05",
+		title: "Generate Image",
+		slug: "generate-image",
+		description:
+			"Create AI-generated images, illustrations, and 3D models from text prompts or reference images, with support for various artistic styles and formats.",
+		category: "creative",
+		tags: ["image-generation", "3d-model", "ai-art", "multimodal"],
+		installCommand: "npx skills install generate-image",
+		createdAt: "2026-05-15T08:00:00Z",
+		authorClerkId: "user_dev_004",
+		authorEmail: "dave@example.com",
+	},
+];
