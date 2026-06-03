@@ -21,11 +21,7 @@ function Home() {
 				</div>
 
 				<div className="actions">
-					<Link
-						to="/skills"
-						className="btn-primary"
-						onClick={() => posthog.capture("browse_registry_clicked")}
-					>
+					<Link to="/skills" className="btn-primary">
 						<Terminal size={18} />
 						<span>Browse Registry</span>
 					</Link>
