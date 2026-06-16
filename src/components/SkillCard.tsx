@@ -36,7 +36,7 @@ const SkillCard = ({
 		<article className="skill-card">
 			<Link
 				to="/skills"
-				tabIndex={-1}
+				tabIndex={-1} // html属性，无障碍优化，跳过此处的Tab导航
 				aria-label={`Open ${title}`}
 				className="overlay"
 			/>
@@ -55,7 +55,7 @@ const SkillCard = ({
 					<div className="author">
 						<img src="/logo512.png" alt="author avatar" className="avatar" />
 						<div className="author-copy">
-							<p>fenmiao</p>+{" "}
+							<p>fenmiao</p>{" "}
 							<p>
 								{createdAt
 									? new Date(createdAt).toLocaleDateString()
@@ -103,7 +103,7 @@ const SkillCard = ({
 					<div className="actions">
 						<Link to="/skills" className="open" title={`Open ${title}`}>
 							<span>Open</span>
-							<ArrowUpRight size={16} />
+							<ArrowUpRight size={14} />
 						</Link>
 						<button
 							type="button"
