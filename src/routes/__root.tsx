@@ -10,6 +10,7 @@ import Crosshair from "#/components/Crosshair";
 import Navbar from "#/components/Navbar";
 import { ClerkProvider } from '@clerk/tanstack-react-start'
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
+import { PostHogProvider, PostHogPageView } from "../integrations/posthog";
 import appCss from "../styles.css?url";
 
 interface MyRouterContext {
@@ -52,7 +53,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 				<HeadContent />
 			</head>
 			<body className="font-sans antialiased wrap-anywhere">
+				<PostHogProvider>
 				<ClerkProvider>
+					<PostHogPageView />
 					<div id="root-layout">
 						<header>
 							<div className="frame">
@@ -78,6 +81,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 						]}
 					/>
 				</ClerkProvider>
+				</PostHogProvider>
 				<Scripts />
 			</body>
 		</html>
