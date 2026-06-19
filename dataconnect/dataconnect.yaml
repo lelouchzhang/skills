@@ -1,8 +1,8 @@
 specVersion: "v1"
 serviceId: "fm-skills-service"
 location: "me-west1"
-schemas:
-  - source: "./schema"
+schema:
+    source: "./schema"
     datasource:
       postgresql:
         database: "fm-skills-database"
