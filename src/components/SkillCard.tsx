@@ -8,18 +8,18 @@ import {
 	MessageSquare,
 } from "lucide-react";
 import { useState } from "react";
+import type { GetSkillsData } from "#/dataconnect-generated";
+
+type SkillCardProps = GetSkillsData["skills"][number];
 
 const SkillCard = ({
-	id,
 	title,
-	slug,
 	description,
 	tags,
 	installCommand,
 	createdAt,
-	authorClerkId,
-	authorEmail,
-}: SkillRecord) => {
+	author,
+}: SkillCardProps) => {
 	const [_copied, _setCopiedd] = useState(false);
 	const category = tags[0] ?? "General";
 
@@ -36,10 +36,11 @@ const SkillCard = ({
 		<article className="skill-card">
 			<Link
 				to="/skills"
-				tabIndex={-1} // html属性，无障碍优化，跳过此处的Tab导航
+				tabIndex={-1}
 				aria-label={`Open ${title}`}
 				className="overlay"
 			/>
+
 			<div className="chrome">
 				<div className="chrome-bar">
 					<div className="lights">
@@ -47,15 +48,20 @@ const SkillCard = ({
 						<div className="light amber" />
 						<div className="light green" />
 					</div>
-					<div className="host">register.sh</div>
+					<div className="host">registry.sh</div>
 				</div>
 			</div>
+
 			<div className="body">
 				<div className="meta">
 					<div className="author">
-						<img src="/logo512.png" alt="author avatar" className="avatar" />
+						<img
+							src={author.imageUrl || "/logo512.png"}
+							alt={`${author.username} avatar`}
+							className="avatar"
+						/>
 						<div className="author-copy">
-							<p>fenmiao</p>{" "}
+							<p>{author.username}</p>
 							<p>
 								{createdAt
 									? new Date(createdAt).toLocaleDateString()
@@ -63,13 +69,15 @@ const SkillCard = ({
 							</p>
 						</div>
 					</div>
+
 					<p className="category">{category}</p>
 				</div>
 
 				<div className="summary">
-					<Link to={`/skills`} className="title-link">
+					<Link to="/skills" className="title-link">
 						<h3>{title}</h3>
 					</Link>
+
 					<p>{description}</p>
 				</div>
 
@@ -94,9 +102,10 @@ const SkillCard = ({
 							<ArrowBigUp size={16} fill="currentColor" />
 							<span>{tags.length}</span>
 						</button>
+
 						<div className="comments">
-							<MessageSquare size={16} />
-							<span>{authorEmail ? 1 : 0}</span>
+							<MessageSquare size={14} />
+							<span>{author.email ? 1 : 0}</span>
 						</div>
 					</div>
 
@@ -105,10 +114,11 @@ const SkillCard = ({
 							<span>Open</span>
 							<ArrowUpRight size={14} />
 						</Link>
+
 						<button
 							type="button"
 							className="save"
-							aria-label="Save state"
+							aria-label="Saved state"
 							disabled
 						>
 							<Bookmark size={16} />
