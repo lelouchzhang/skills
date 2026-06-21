@@ -1,11 +1,31 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
 import { Terminal } from "lucide-react";
 import SkillCard from "#/components/SkillCard";
-import { MOCK_SKILLS } from "#/mock/mock";
+import { getSkills } from "#/dataconnect-generated";
+import { dataConnect } from "#/lib/firebase";
 
-export const Route = createFileRoute("/")({ component: Home });
+const getSkillsHandler = createServerFn({ method: "GET" }).handler(async () => {
+	try {
+		const { data } = await getSkills(dataConnect, {
+			searchTerm: "",
+			limit: 10,
+		});
+		return data.skills;
+	} catch (error) {
+		console.error(error);
+		return [];
+	}
+});
+
+export const Route = createFileRoute("/")({
+	component: Home,
+	loader: () => getSkillsHandler(),
+});
 
 function Home() {
+	const skills = Route.useLoaderData();
+
 	return (
 		<div id="home">
 			<section className="hero">
@@ -43,10 +63,8 @@ function Home() {
 				</div>
 
 				<div className="skills-grid">
-					{MOCK_SKILLS.length > 0 ? (
-						MOCK_SKILLS.map((_skill) => (
-							<SkillCard key={_skill.id} {..._skill} />
-						))
+					{skills.length > 0 ? (
+						skills.map((_skill) => <SkillCard key={_skill.id} {..._skill} />)
 					) : (
 						<p>No skills found</p>
 					)}

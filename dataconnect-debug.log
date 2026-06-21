@@ -1,0 +1,28 @@
+I0620 03:46:03.868476    9160 load.go:31] Reloading schema and connectors...
+W0620 03:46:03.928760    9160 control.go:68] [/emulator/fm-skills-service da91] connector "example" has errors: connectors\queries.gql:1:18: Expected Name, found )
+
+sources: connectors\queries.gql [19B] 
+I0620 03:46:03.928760    9160 control.go:94] [/emulator/fm-skills-service da91] UpdateResources(): done
+Main schema: sources: schema\schema.gql [475B] 
+Connector "example": sources: connectors\queries.gql [19B] 
+E0620 03:46:03.928760    9160 load.go:73] Could not load sources: 
+Errors: connectors\queries.gql:1:18: Expected Name, found )
+I0620 03:46:03.930756    9160 collector.go:107] schema extensions wrote into "D:\\full stack\\tanstack\\skills\\skills\\dataconnect\\.dataconnect\\schema"
+Generated sources: main\query.gql [2404B] main\mutation.gql [6444B] prelude.gql [73219B] main\implicit.gql [266B] main\input.gql [15558B] main\relation.gql [6578B] 
+I0620 03:46:03.930756    9160 load.go:74] Finished reloading
+I0620 03:46:03.931751    9160 dev.go:105] Listening on address (HTTP + gRPC): 127.0.0.1:9399
+I0620 03:46:03.932749    9160 dev.go:105] Listening on address (HTTP + gRPC): [::1]:9399
+I0620 03:46:09.621786    9160 migrate.go:24] Running migration SQL:
+Step 1: CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+Step 2: CREATE TABLE "public"."user" ("clerk_id" text NOT NULL, "email" text NOT NULL, "image_url" text NULL, "username" text NULL, PRIMARY KEY ("clerk_id"))
+Step 3: CREATE UNIQUE INDEX "user_clerkId_uidx" ON "public"."user" ("clerk_id")
+Step 4: CREATE TABLE "public"."skill" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "author_clerk_id" text NOT NULL, "created_at" timestamptz NOT NULL, "description" text NOT NULL, "install_command" text NOT NULL, "prompt_config" text NOT NULL, "tags" text[] NOT NULL, "title" text NOT NULL, "usage_example" text NOT NULL, PRIMARY KEY ("id"), CONSTRAINT "skill_author_clerk_id_fkey" FOREIGN KEY ("author_clerk_id") REFERENCES "public"."user" ("clerk_id") ON DELETE CASCADE)
+Step 5: CREATE INDEX "skill_authorClerkId_idx" ON "public"."skill" ("author_clerk_id")
+W0620 03:46:09.789215    9160 control.go:68] [/emulator/fm-skills-service ebac] connector "example" has errors: connectors\queries.gql:1:18: Expected Name, found )
+
+sources: connectors\queries.gql [19B] 
+I0620 03:46:09.789215    9160 control.go:94] [/emulator/fm-skills-service ebac] UpdateResources(): done
+Main schema: sources: schema\schema.gql [475B] 
+Connector "example": sources: connectors\queries.gql [19B] 
+I0620 03:46:09.789215    9160 service.go:148] [/emulator/fm-skills-service ebac] while configuring to server.Settings{ConnectionString:"dbname='fm-skills-database' host='127.0.0.1' port='5432' sslmode='disable' dbname='fm-skills-database'", MaxOpenConnection:0, UseDummy:false, EnableGoogleMLIntegration:false, SchemaValidationMode:""}, failed to reload last live sources: 
+Errors: connectors\queries.gql:1:18: Expected Name, found )
