@@ -57,7 +57,7 @@ const SkillCard = ({
 					<div className="author">
 						<img
 							src={author.imageUrl || "/logo512.png"}
-							alt={`${author.username} avatar`}
+							alt={`${author.username ?? "Unknown user"} avatar`}
 							className="avatar"
 						/>
 						<div className="author-copy">
